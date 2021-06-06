@@ -3,13 +3,16 @@ package com.example.springframework.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
+@RequestMapping("/cart")
+public class CartController {
 
     @GetMapping
-    public String helloPage(Model model) {
-        model.addAttribute("name", "Alexander!");
-        return "index";
+    public String cart (Model model) {
+
+        model.addAttribute("currentPage", "cart");
+        return "cart";
     }
 }
