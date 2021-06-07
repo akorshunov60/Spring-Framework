@@ -7,48 +7,53 @@
 <head th:insert="default :: head"></head>
 <body class="d-flex flex-column h-100">
 
-<header th:replace="default :: header"> </header>
+<header th:replace="default :: header (activePage=${activePage})"> </header>
 <main class="flex-shrink-0">
   <div class="container">
     <div class="row py-2">
 
       <h3>Форма изменения продукта</h3>
 
-      <form method="POST" th:action="@{/products/edit/save}" th:object="${product}" disabled>
+      <form method="POST" th:action="@{/products/edit/save}" th:object="${product}">
         <input type="hidden" th:field="*{id}" />
 
         <div class="input-group mb-3">
           <span class="input-group-text">Product name</span>
           <label>
-            <input type="text" class="form-control" th:field="*{name}" th:disabled="${disabled == true}">
+            <input type="text" class="form-control" th:field="*{name}"
+                   th:disabled="${disabled == true}">
           </label>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Description</span>
           <label>
-            <input type="text" class="form-control" placeholder="... description" th:disabled="${disabled == true}">
+            <input type="text" class="form-control" placeholder="... description"
+                   th:disabled="${disabled == true}">
           </label>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Manufacturer</span>
           <label>
-            <input type="text" class="form-control" placeholder="... manufacturer" th:disabled="${disabled == true}">
+            <input type="text" class="form-control" placeholder="... manufacturer"
+                   th:disabled="${disabled == true}">
           </label>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Price</span>
           <label>
-            <input type="text" class="form-control" th:field="*{price}" th:disabled="${disabled == true}">
+            <input type="text" class="form-control" th:field="*{price}"
+                   th:disabled="${disabled == true}">
           </label>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Amount</span>
           <label>
-            <input type="text" class="form-control"  placeholder="... amount" th:disabled="${disabled == true}">
+            <input type="text" class="form-control"  placeholder="... amount"
+                   th:disabled="${disabled == true}">
           </label>
         </div>
 
@@ -57,10 +62,12 @@
         <div class="d-flex justify-content-between">
           <div class="list-group list-group-horizontal">
             <input type="submit" th:value="*{id == null} ? 'Create' : 'Save'"
-                   class="list-group-item list-group-item-action list-group-item-success" th:disabled="${disabled == true}">
+                   class="list-group-item list-group-item-action list-group-item-success"
+                   th:disabled="${disabled == true}"
+                   th:hidden="${disabled == true}">
           </div>
           <div class="list-group list-group-horizontal">
-            <a type="button" th:href="@{/products}"
+            <a type="button" th:href="@{${referer}}"
                class="list-group-item list-group-item-action list-group-item-danger">
               <i class="bi bi-x-circle"></i>&nbsp;Cancel
             </a>

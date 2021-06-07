@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class IndexController {
 
+    @ModelAttribute("activePage")
+    String activePage() {
+        return "index";
+    }
+
     @GetMapping(value="/")
     public String index (Model model) {
 
-        model.addAttribute("message", "Hello World");
         model.addAttribute("pageTitle", "Main");
-        model.addAttribute("currentPage", "index");
-
         return "index";
     }
 }

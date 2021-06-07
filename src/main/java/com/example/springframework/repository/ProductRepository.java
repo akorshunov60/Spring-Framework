@@ -10,12 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class ProductRepository {
 
-    private static final ProductRepository INSTANCE = new ProductRepository();
+//    private static final ProductRepository INSTANCE = new ProductRepository();
     private final Map<Long, Product> productMap = new ConcurrentHashMap<>();
 
-    public static ProductRepository getInstance() {
-        return INSTANCE;
-    }
+//    public static ProductRepository getInstance() {
+//        return INSTANCE;
+//    }
 
     {
 //        for (long i = 1; i < 6; i++) {
@@ -55,4 +55,5 @@ public class ProductRepository {
     // удалить продукт по id
     public void deleteById(Long id) {
         productMap.remove(id);
-    }}
+    }
+}
